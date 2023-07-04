@@ -1,0 +1,15 @@
+<div class="main-itemincart-container grid grid-cols-9 justify-between 
+items-center gap-3 ">
+    <img [src]="cartItem.productThumbnailImages[0]" alt="" 
+    class="items-th w-full col-span-2">
+    <div class="iteminfo font-kumbh col-span-6">
+        <p class="text-Darkgrayishblue">{{cartItem.productName}}</p>
+        <p class="text-Darkgrayishblue after:">${{cartItem.productPrice | number: '1.2-2'}} 
+            x {{cartItem.productquantity}} 
+            <span *ngIf="cartItem.productquantity>1" class="text-black font-bold">
+                ${{cartItem.productquantity * cartItem.productPrice | number: '1.2-2'}}
+            </span>
+        </p>
+    </div>
+    <img class="delete-item" (click)="deleteItem()" src="/assets/images/icon-delete.svg" alt="">
+</div>

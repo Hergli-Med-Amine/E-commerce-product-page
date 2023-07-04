@@ -1,0 +1,51 @@
+
+    <div onselectstart="return false" class="gallery-main-container max-w-lg w-1/2 grid grid-cols-4
+        gap-6">
+        <div class="mainimage w-full relative col-span-4 ">
+            <img class="w-full rounded-xl " [src]="activeImage" 
+            alt="">
+            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg"
+            class="absolute right-0 top-[-30px] z-10"
+            (click)="lightboxtoggle()">
+                <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 
+                2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 
+                2.404.782l4.595 4.596L11.596.782Z" fill="#69707D" 
+                class="hover:fill-Orange" fill-rule="evenodd"/>
+            </svg>
+            <svg class="absolute top-[50%] left-[-20px] translate-y-[-50%] bg-White hover:stroke-Orange
+            rounded-[40px] h-10 w-10 " stroke="#69707D" width="12" height="18" 
+            xmlns="http://www.w3.org/2000/svg"
+            (click)="slidePreviousActiveImage()">
+                <path transform="translate(10 10)"
+                class="hover:stroke-Orange" 
+                d="M11 1 3 9l8 8"  stroke-width="3" 
+                fill="none" fill-rule="evenodd"/>
+            </svg>
+            <svg class="absolute top-[50%] right-[-20px] translate-y-[-50%] bg-White hover:stroke-Orange 
+            rounded-[40px] h-10 w-10 " stroke="#69707D" width="12" height="18" 
+            xmlns="http://www.w3.org/2000/svg"
+            (click)="slideNextActiveImage()">
+                <path transform="translate(15 10)"
+                class="hover:stroke-Orange"  
+                d="m2 1 8 8-8 8"  stroke-width="3" 
+                fill="none" fill-rule="evenodd"/>
+            </svg>
+        </div>
+        
+
+        <div class="thumbnail relative" *ngFor="let image of thimages;
+         let i = index" (mousedown)="setActiveImage(i)">
+            <div onselectstart="return false" class="activethumbnail absolute 
+            w-full h-full bg-[hsla(0,0%,100%,0.7)] rounded-xl z-10 transition-opacity 
+            duration-300 ease-in-out hover:opacity-75 hover:cursor-pointer"
+            [class.opacity-100]="activeStates[i]"
+            [class.border-[3px]]= "activeStates[i]"
+            [class.border-Orange]="activeStates[i]"
+            [class.opacity-0]="!activeStates[i]"
+            >
+            </div>
+            <img onselectstart="return false" class="rounded-xl" [src]="image" alt="">
+        </div>
+
+    </div>
+
